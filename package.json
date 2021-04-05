@@ -1,27 +1,25 @@
 {
   "name": "my-web-application",
-  "version": "1.0.0",
-  "description": "My web app",
+  "version": "0.0.0",
+  "private": true,
   "engines": {
-    "node": "12.x"
+    "node": "15.x"
   },
-  "main": "app.js",
+  "main": "./bin/www",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NicholasSutanto239/my-web-application.git"
+    "start": "node ./bin/www",
+    "test": "echo NO TEST && exit"
   },
   "keywords": [
-    "nodejs",
-    "heroku"
+    "heroku",
+    "nodejs"
   ],
-  "author": "Nicholas S",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/NicholasSutanto239/my-web-application/issues"
-  },
-  "homepage": "https://github.com/NicholasSutanto239/my-web-application#readme"
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pug": "^3.0.2"
+  }
 }
