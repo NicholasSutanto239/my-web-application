@@ -10,3 +10,8 @@ a {
 q {
   font-style: italic;
 }
+
+span {
+  color: yellow;
+  font-size: 12pt;
+}
