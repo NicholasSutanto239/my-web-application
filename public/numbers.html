@@ -43,7 +43,17 @@
         .imgVerticalAlign {
             vertical-align: middle;
         }
-
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .leftContainer {
+            width: 10%;
+            background-color: lightgoldenrodyellow;
+            border: 1px solid black;
+            padding: 1px;
+            margin-top: 20px;
+        }
     </style>
     <title>Numbers</title>
 </head>
@@ -51,7 +61,7 @@
 <a href="index.html">Return to Home Page</a>
 <p>Welcome to my Page of Numbers</p>
 <div>
-<table>
+<table class="center">
     <tr class="th">
         <th>n</th>
         <th>n2</th>
@@ -138,8 +148,8 @@
     </tr>
 </table>
 </div>
-<div class="outerContainer">
-    <div class="innerContainer">
+<div class="outerContainer center">
+    <div class="innerContainer center">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
             nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit
@@ -159,9 +169,11 @@
 </div>
 <br>
 
-<div>
+<div class="center">
+    <div>
     <p class="textAlignCenter">Linear</p>
     <img src="images/linear.png" class="imgVerticalAlign" alt="Picture of the Linear Graph">
+    </div>
 </div>
 <div>
     <p class="textAlignCenter">Quadratic</p>
@@ -178,6 +190,14 @@
 <div>
     <p class="textAlignCenter">Exponential</p>
     <img src="images/Exponential.png" class="imgVerticalAlign" alt="Picture of the Exponential Graph">
+</div>
+
+<div class="leftContainer">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 
 </body>
