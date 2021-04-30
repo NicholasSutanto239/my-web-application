@@ -36,13 +36,6 @@
         p {
             font-family: "Arial";
         }
-        .textAlignCenter {
-            text-align: center;
-            display: inline-block;
-        }
-        .imgVerticalAlign {
-            vertical-align: middle;
-        }
         .center {
             margin-left: auto;
             margin-right: auto;
@@ -54,6 +47,40 @@
             padding: 1px;
             margin-top: 20px;
         }
+        .textAlignCenter {
+            text-align: center;
+            display: inline-block;
+        }
+        .imgVerticalAlign {
+            vertical-align: middle;
+        }
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .flex-container1 {
+            display: flex;
+            justify-content: center;
+            font-family: Arial;
+        }
+        .flex-container1 > .divLeftRight {
+            background-color: #FFF2CC;
+            border: 1px solid black;
+            width: 10%;
+            text-align: left;
+            font-size: 16px;
+            padding: 1px;
+        }
+        .flex-container1 > .divMiddle {
+            background-color: #FBE4D5;
+            border: 1px solid black;
+            width: 80%;
+            text-align: left;
+            font-size: 16px;
+            padding: 1px;
+        }
+
     </style>
     <title>Numbers</title>
 </head>
@@ -169,35 +196,49 @@
 </div>
 <br>
 
-<div class="center">
-    <div>
-    <p class="textAlignCenter">Linear</p>
-    <img src="images/linear.png" class="imgVerticalAlign" alt="Picture of the Linear Graph">
-    </div>
-</div>
-<div>
-    <p class="textAlignCenter">Quadratic</p>
-    <img src="images/Quadratic.png" class="imgVerticalAlign" alt="Picture of the Quadratic Graph">
-</div>
-<div>
-    <p class="textAlignCenter">Cubic</p>
-    <img src="images/Cubic.png" class="imgVerticalAlign" alt="Picture of the Cubic Graph">
-</div>
-<div>
-    <p class="textAlignCenter">Factorial</p>
-    <img src="images/Factorial.png" class="imgVerticalAlign" alt="Picture of the Factorial Graph">
-</div>
-<div>
-    <p class="textAlignCenter">Exponential</p>
-    <img src="images/Exponential.png" class="imgVerticalAlign" alt="Picture of the Exponential Graph">
+<div class="flex-container">
+    <div><p>Linear</p></div>
+    <div><img src="images/linear.png" alt="Picture of the Linear Graph"></div>
+    <div><p>Quadratic</p></div>
+    <div><img src="images/Quadratic.png" alt="Picture of the Quadratic Graph"></div>
+    <div><p>Cubic</p></div>
+    <div><img src="images/Cubic.png" alt="Picture of the Cubic Graph"></div>
+    <div><p>Factorial</p></div>
+    <div><img src="images/Factorial.png" alt="Picture of the Factorial Graph"></div>
+    <div><p>Exponential</p></div>
+    <div><img src="images/Exponential.png" alt="Picture of the Exponential Graph"></div>
 </div>
 
-<div class="leftContainer">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+
+<div class="flex-container1">
+    <div class="divLeftRight">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
         nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
         velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+    <div class="divMiddle">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+        totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+        voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius
+        modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
+        veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
+        consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
+        consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Sed ut perspiciatis unde omnis
+        iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+        beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+        fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro
+        quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius
+        modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
+        veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
+        consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
+        consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</div>
+
+    <div class="divLeftRight">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+        anim id est laborum.</div>
 </div>
 
 </body>
