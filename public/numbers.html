@@ -40,45 +40,40 @@
             margin-left: auto;
             margin-right: auto;
         }
-        .leftContainer {
-            width: 10%;
-            background-color: lightgoldenrodyellow;
-            border: 1px solid black;
-            padding: 1px;
-            margin-top: 20px;
-        }
-        .textAlignCenter {
-            text-align: center;
-            display: inline-block;
-        }
-        .imgVerticalAlign {
-            vertical-align: middle;
-        }
         .flex-container {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .flex-container1 {
+        .flex-container > .divText {
+            justify-content: left;
+
+        }
+        .flex-container > .divImage {
+
+        }
+        .flex-containerColumns {
             display: flex;
             justify-content: center;
             font-family: Arial;
         }
-        .flex-container1 > .divLeftRight {
+        .flex-containerColumns > .divLeftRight {
             background-color: #FFF2CC;
             border: 1px solid black;
             width: 10%;
             text-align: left;
             font-size: 16px;
-            padding: 1px;
+            padding-right: 5px;
+            padding-left: 5px;
         }
-        .flex-container1 > .divMiddle {
+        .flex-containerColumns > .divMiddle {
             background-color: #FBE4D5;
             border: 1px solid black;
             width: 80%;
             text-align: left;
             font-size: 16px;
-            padding: 1px;
+            padding-right: 5px;
+            padding-left: 5px;
         }
 
     </style>
@@ -197,20 +192,20 @@
 <br>
 
 <div class="flex-container">
-    <div><p>Linear</p></div>
+    <div class="divText">Linear</div>
     <div><img src="images/linear.png" alt="Picture of the Linear Graph"></div>
-    <div><p>Quadratic</p></div>
+    <div>Quadratic</div>
     <div><img src="images/Quadratic.png" alt="Picture of the Quadratic Graph"></div>
-    <div><p>Cubic</p></div>
+    <div>Cubic</div>
     <div><img src="images/Cubic.png" alt="Picture of the Cubic Graph"></div>
-    <div><p>Factorial</p></div>
+    <div>Factorial</div>
     <div><img src="images/Factorial.png" alt="Picture of the Factorial Graph"></div>
-    <div><p>Exponential</p></div>
+    <div>Exponential</div>
     <div><img src="images/Exponential.png" alt="Picture of the Exponential Graph"></div>
 </div>
 
 
-<div class="flex-container1">
+<div class="flex-containerColumns">
     <div class="divLeftRight">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
         nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
