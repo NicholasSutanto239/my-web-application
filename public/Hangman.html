@@ -5,22 +5,33 @@
     <title>Hangman</title>
 </head>
 <body>
+
 <div>
     <h1>HANGMAN</h1>
     <label>Select a the maximum amount of letters</label>
-    <input type="button" id="one" value="One">
-    <input type="button" id="two" value="Two">
     <input type="button" id="three" value="Three">
     <input type="button" id="four" value="Four">
     <input type="button" id="five" value="Five">
     <input type="button" id="six" value="Six">
-
+    <input type="button" id="seven" value="Seven">
+    <input type="button" id="eight" value="Eight">
+    <input type="button" id="nine" value="Nine">
+    <input type="button" id="ten" value="Ten">
 </div>
 <br>
 <div>
     <label>Select a category</label>
     <input type="button" id="selectCategoryCar" value="Car brands">
     <input type="button" id="selectCategorySports" value="Sports">
+    <script>
+        var words = {words: [{"category": "car_brands", "word":"TOYOTA"}, {"category": "car_brands", "word":"HONDA"}, {"category": "car_brands", "word":"NISSAN"}, {"category": "car_brands", "word":"SUBARU"},
+                {"category": "car_brands", "word":"BMW"}, {"category": "car_brands", "word":"MERCEDES"}, {"category": "car_brands", "word":"FORD"}, {"category": "car_brands", "word":"JEEP"}
+                , {"category": "car_brands", "word":"CHEVROLET"}, {"category": "car_brands", "word":"KIA"}
+                , {"category": "sports", "word":"BASKETBALL"}, {"category": "sports", "word":"SOCCER"}, {"category": "sports", "word":"FOOTBALL"}, {"category": "sports", "word":"BASEBALL"}
+                , {"category": "sports", "word":"SWIMMING"}, {"category": "sports", "word":"BOXING"}, {"category": "sports", "word":"HOCKEY"}, {"category": "sports", "word":"BADMINTON"}
+                , {"category": "sports", "word":"CRICKET"}, {"category": "sports", "word":"WRESTLING"}]};
+
+    </script>
 </div>
 <br>
 <div>
