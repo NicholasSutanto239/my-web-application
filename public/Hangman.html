@@ -1,47 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Hangman</title>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="../stylesheets/style.css" rel="stylesheet">
+
 </head>
+
 <body>
-
-<div>
+<nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="simple-page.html">My Favorite Quotes</a>
+    <a href="resume.html">Resume</a>
+    <a href="numbers.html">Page of Numbers</a>
+    <a href="Hangman.html">Hangman</a>
+</nav>
+<div class="jumbotron text-center">
     <h1>HANGMAN</h1>
-    <label>Select a the maximum amount of letters</label>
-    <input type="button" id="three" value="Three">
-    <input type="button" id="four" value="Four">
-    <input type="button" id="five" value="Five">
-    <input type="button" id="six" value="Six">
-    <input type="button" id="seven" value="Seven">
-    <input type="button" id="eight" value="Eight">
-    <input type="button" id="nine" value="Nine">
-    <input type="button" id="ten" value="Ten">
-</div>
-<br>
-<div>
-    <label>Select a category</label>
-    <input type="button" id="selectCategoryCar" value="Car brands">
-    <input type="button" id="selectCategorySports" value="Sports">
-    <script>
-        var words = {words: [{"category": "car_brands", "word":"TOYOTA"}, {"category": "car_brands", "word":"HONDA"}, {"category": "car_brands", "word":"NISSAN"}, {"category": "car_brands", "word":"SUBARU"},
-                {"category": "car_brands", "word":"BMW"}, {"category": "car_brands", "word":"MERCEDES"}, {"category": "car_brands", "word":"FORD"}, {"category": "car_brands", "word":"JEEP"}
-                , {"category": "car_brands", "word":"CHEVROLET"}, {"category": "car_brands", "word":"KIA"}
-                , {"category": "sports", "word":"BASKETBALL"}, {"category": "sports", "word":"SOCCER"}, {"category": "sports", "word":"FOOTBALL"}, {"category": "sports", "word":"BASEBALL"}
-                , {"category": "sports", "word":"SWIMMING"}, {"category": "sports", "word":"BOXING"}, {"category": "sports", "word":"HOCKEY"}, {"category": "sports", "word":"BADMINTON"}
-                , {"category": "sports", "word":"CRICKET"}, {"category": "sports", "word":"WRESTLING"}]};
+    <div>
+        <div class="dropdown">
+            <label for="numletters">Select a the maximum number of letters: </label>
+            <select class="btn btn-info" name="numletters" id="numletters">
+                <option value="">Select an Option</option>
+                <option value="3">3 Letters</option>
+                <option value="4">4 Letters</option>
+                <option value="5">5 Letters</option>
+                <option value="6">6 Letters</option>
+            </select>
 
-    </script>
-</div>
-<br>
-<div>
-    <label for="guess">Enter the word or a letter</label>
-    <input type="text" id="guess">
-</div>
-<br>
-<div>
-    <progress class="progress-bar" id="progress" value="0" max="100">50 %</progress>
+        </div>
+    </div>
+    <br>
+    <div>
+        <div class="dropdown">
+            <label for="category">Select a category: </label>
+            <select class="btn btn-success" name="category" id="category">
+                <option value="">Select an Option</option>
+                <option value="brands">Car brands</option>
+                <option value="sports">Sports</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="guess">Enter the word or a letter</label>
+            <input style="border: 2px solid green ;border-radius: 10px;" type="text" id="guess" oninput="checkWord(this)" disabled>
+        </div>
+        <div>
+            <p class="text-warning bg-info " id="guessnum"></p>
+            <p id="result"> </p>
+        </div>
+        <br>
+        <div class="progress" style="width: 40%; margin-left: 30%;">
+            <div id="progress" class="progress-bar w-25 p-3" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%;  ">
+                0%
+
+            </div>
+        </div>
+        <div>
+            <button onClick="window.location.reload();">Reset</button>
+        </div>
+    </div>
 </div>
 
 </body>
+<script>
+    let brands = [{"name": "TOYOTA"}, {"name": "NISSAN"}, {"name": "HONDA"}, {"name": "SUBARU"}, {"name": "JEEP"},
+        {"name": "FORD"}, {"name": "AUDI"}, {"name": "BMW"}, {"name": "FIAT"}, {"name": "KIA"}]
+
+    let sports = [{"name": "SKI"}, {"name": "SOCCER"}, {"name": "SQUASH"}, {"name": "RUGBY"},
+        {"name": "KARATE"}, {"name": "GOLF"}, {"name": "HOCKEY"}, {"name": "BOXING"}, {"name": "ROWING"}]
+
+    var numletters = document.getElementById("numletters");
+    var guessnum = document.getElementById("guessnum");
+    var progress = document.getElementById("progress");
+    var result = document.getElementById("result");
+    let numberofletter = 0;
+    let categoryvalue = "";
+    let inputpreviouslenght = 0;
+
+    numletters.addEventListener("change", e => {
+        numberofletter = e.target.value;
+        let string_ = "";
+        for (let i = 0; i < numberofletter; i++) {
+            string_ += "_ ";
+        }
+        guessnum.innerHTML = "Your category is.... " + string_;
+        enableinput()
+    })
+    var category = document.getElementById("category");
+    category.addEventListener("change", e => {
+        categoryvalue = e.target.value;
+        enableinput()
+    })
+
+    function enableinput() {
+        if (categoryvalue != "" && numberofletter > 0) {
+            document.getElementById("guess").disabled = false;
+        }
+    }
+    var selectedword = "";
+    let matchedChars = "";
+
+    function checkWord(selfvalue) {
+        let flagtocheck = true;
+        for (let i = 0; i < selfvalue.value.length - 1 && selfvalue.value.length > 1; i++) {
+            if (selfvalue.value.charAt(i).toUpperCase() == selfvalue.value.charAt(selfvalue.value.length - 1).toUpperCase()) {
+                selfvalue.value = selfvalue.value.substring(0, selfvalue.value.length - 1);
+                flagtocheck = false;
+            }
+        }
+        if (flagtocheck) {
+            if (categoryvalue == "brands") {
+                let progressflag = true;
+                let flagnothingmatched = true;
+                if (selectedword == "") {
+                    let flag = false;
+                    let barflag = false;
+                    for (let i = 0; i < brands.length; i++) {
+                        matchedChars = "";
+                        for (let j = 0; j < brands[i].name.length; j++) {
+                            if (brands[i].name.charAt(j).toUpperCase() == selfvalue.value.charAt(selfvalue.value.length - 1).toUpperCase() && brands[i].name.length <= numberofletter) {
+                                matchedChars += selfvalue.value.charAt(selfvalue.value.length - 1).toUpperCase();
+                                selectedword = brands[i].name.toUpperCase();
+                                flag = true;
+                                progressflag = false;
+                                flagnothingmatched = false;
+                            } else {
+                                matchedChars += " _"
+                            }
+                        }
+                        guessnum.innerHTML = "Your category is Car Brands: " + matchedChars;
+                        if (flag) break;
+                    }
+                } else {
+                    matchedChars = matchedChars.replace(/\s+/g, '');
+                    for (let i = 0; i < selectedword.length; i++) {
+                        if (selectedword.charAt(i).toUpperCase() == selfvalue.value.charAt(selfvalue.value.length - 1).toUpperCase()) {
+                            matchedChars = replaceAt(matchedChars, i, selectedword.charAt(i))
+                            guessnum.innerHTML = "Your category is Car Brands: " + matchedChars;
+                            progressflag = false;
+                        }
+                    }
+                    if (selectedword.toUpperCase() == matchedChars) {
+                        guessnum.innerHTML = "Your category is Car Brands: " + matchedChars;
+                        result.innerHTML = "CONGRATULATIONS! You WIN!"
+                        result.className = "text-success"
+                        selfvalue.disabled = true;
+                    }
+                }
+                if (progressflag) {
+                    let progressbar = parseInt(progress.style.width.replace("%", ""));
+                    progress.style.width = (progressbar + 20) + "%";
+                    progress.style.backgroundColor = "RED";
+                    progress.innerHTML = (progressbar + 20) + "%";
+                    if ((progressbar + 20) == 100) {
+                        if (flagnothingmatched) {
+                            matchedChars = "Nothing lies in this " + numberofletter + " letters lenght!";
+                            for (let k = 0; k < sports.length; k++) {
+                                if (brands[k].name.length <= numberofletter) {
+                                    matchedChars = brands[k].name;
+                                }
+                            }
+                            guessnum.innerHTML = "Your category is Car Brands: " + matchedChars;
+                        } else {
+                            guessnum.innerHTML = "Your category is Car Brands: " + matchedChars;
+                        }
+                        result.innerHTML = "You LOSE this game!"
+                        result.className = "text-danger"
+                        selfvalue.disabled = true;
+                    }
+                }
+            } else if (categoryvalue == "sports") {
+                let progressflag = true;
+                let flagnothingmatched = true;
+                if (selectedword == "") {
+                    let flag = false;
+                    let barflag = false;
+                    for (let i = 0; i < sports.length; i++) {
+                        matchedChars = "";
+                        for (let j = 0; j < sports[i].name.length; j++) {
+                            if (sports[i].name.charAt(j).toUpperCase() == selfvalue.value.charAt(selfvalue.value.length - 1).toUpperCase() && sports[i].name.length <= numberofletter) {
+                                matchedChars += selfvalue.value.charAt(selfvalue.value.length - 1).toUpperCase();
+                                selectedword = sports[i].name.toUpperCase();
+                                flag = true;
+                                progressflag = false;
+                                flagnothingmatched == false;
+                            } else if (j < numberofletter) {
+                                matchedChars += " _"
+                            }
+                        }
+                        guessnum.innerHTML = "Your category is Sports " + matchedChars;
+                        if (flag) break;
+                    }
+                } else {
+                    matchedChars = matchedChars.replace(/\s+/g, '');
+                    for (let i = 0; i < selectedword.length; i++) {
+                        if (selectedword.charAt(i).toUpperCase() == selfvalue.value.charAt(selfvalue.value.length - 1).toUpperCase()) {
+                            matchedChars = replaceAt(matchedChars, i, selectedword.charAt(i))
+                            guessnum.innerHTML = "Your category is Sports " + matchedChars;
+                            progressflag = false;
+                        }
+                    }
+                    if (selectedword.toUpperCase() == matchedChars) {
+                        guessnum.innerHTML = "Your category is Sports " + matchedChars;
+                        result.innerHTML = "CONGRATULATIONS! You WIN!"
+                        result.className = "text-success"
+                        selfvalue.disabled = true;
+                    }
+                }
+                if (progressflag) {
+                    let progressbar = parseInt(progress.style.width.replace("%", ""));
+                    progress.style.width = (progressbar + 20) + "%";
+                    progress.style.backgroundColor = "RED";
+                    progress.innerHTML = (progressbar + 20) + "%";
+                    if ((progressbar + 20) == 100) {
+                        if (flagnothingmatched) {
+                            matchedChars = "Nothing lies in this " + numberofletter + " letters length!";
+                            for (let k = 0; k < sports.length; k++) {
+                                if (sports[k].name.length <= numberofletter) {
+                                    matchedChars = sports[k].name;
+                                }
+                            }
+                            guessnum.innerHTML = "Your category is Sports " + matchedChars;
+                        } else {
+                            guessnum.innerHTML = "Your category is Sports " + matchedChars;
+                        }
+                        result.innerHTML = "You LOSE this game!"
+                        result.className = "text-danger"
+                        selfvalue.disabled = true;
+                    }
+                }
+            }
+        }
+    }
+
+    function replaceAt(str, index, ch) {
+        return str.replace(/./g, (c, i) => i == index ? ch : c);
+    }
+</script>
 </html>

@@ -2,10 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Vowel/Consonant</title>
 </head>
 <body>
-
-
+<form>
+    <div>
+        <label for="text">Enter a word</label>
+        <input type="text" id="text">
+    </div>
+    <br>
+    <div>
+        <input type="radio" id="radioA" name="letters" value="vowels">
+        <label for="radioA">Get Vowels</label><br>
+        <input type="radio" id="radioB" name="letters" value="consonants">
+        <label for="radioB">Get Consonants</label>
+    </div>
+    <br>
+    <div>
+        <label for="checkbox">Italics</label>
+        <input type="checkbox" id="checkbox">
+    </div>
+    <br>
+    <div>
+        <label for="color">Change color</label>
+        <input type="color" id="color">
+    </div>
+    <br>
+    <div>
+        <input type="button" id="submit" value="Submit">
+        <input type="button" id="clear" value="Clear">
+    </div>
+</form>
 </body>
 </html>
