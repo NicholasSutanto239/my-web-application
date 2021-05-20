@@ -8,11 +8,11 @@
 <form>
     <div>
         <label for="text">Enter a word</label>
-        <input type="text" id="text">
+        <input type="text" name="text-Input" id="text">
     </div>
     <br>
     <div>
-        <input type="radio" id="radioA" name="letters" value="vowels">
+        <input type="radio" id="radioA" name="letters" value="vowels" checked>
         <label for="radioA">Get Vowels</label><br>
         <input type="radio" id="radioB" name="letters" value="consonants">
         <label for="radioB">Get Consonants</label>
@@ -28,10 +28,37 @@
         <input type="color" id="color">
     </div>
     <br>
-    <div>
-        <input type="button" id="submit" value="Submit">
-        <input type="button" id="clear" value="Clear">
+    <div id="text-Output" style="border: #2a4a58 1px solid; height: 100px; width: 300px">
+
     </div>
+    <br>
+
+        <button onclick="FindVowelsConsonant" >Submit</button>
+        <input type="reset" value="Reset">
 </form>
 </body>
 </html>
+<script>
+    function FindVowelsConsonant() {
+        let textInput = document.getElementById("text").value;
+        let italic = document.getElementById("checkbox").checked;
+        let vowel = document.getElementById("radioA").checked;
+        let color = document.getElementById("color").value;
+        let output = document.getElementById("text-Output");
+
+        output.innerHTML = textInput;
+        output.style.color = color;
+
+        if (italic) {
+            output.classList.add("radioA");
+        }
+        if(vowel){
+            const vowel = textInput.match(/[aeiou]/gi);
+            output.innerHTML= vowel;
+        }
+        if(!vowel){
+            const consonants = textInput.match(/[^aeiou]/gi);
+            output.innerHTML = consonants;
+        }
+    }
+</script>
